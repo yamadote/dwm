@@ -1531,7 +1531,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 		gapincr = gapoffset = 0;
 	} else {
 		/* Remove border and gap if layout is monocle or only one client */
-		if (c->mon->lt[c->mon->sellt]->arrange == monocle || n == 1) {
+		if (0) { // c->mon->lt[c->mon->sellt]->arrange == monocle || n == 1) {
 			gapoffset = 0;
 			gapincr = -2 * borderpx;
 			wc.border_width = 0;
@@ -2446,7 +2446,7 @@ updatesystray(void)
 		XMapRaised(dpy, i->win);
 		w += systrayspacing;
 		i->x = w;
-		XMoveResizeWindow(dpy, i->win, i->x, 0, i->w, i->h);
+		XMoveResizeWindow(dpy, i->win, i->x + systraypadding, systraypadding, i->w - systraypadding * 2, i->h - systraypadding * 2);
 		w += i->w;
 		if (i->mon != m)
 			i->mon = m;
